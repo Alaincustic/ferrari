@@ -6,25 +6,15 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://gyc-japan.life",
-  "http://gyc-japan.life",
-  "https://ashokarestro.live",
-  "http://ashokarestro.live",
-  "http://127.0.0.1:5500",
-  "http://dailystories.fun",
-  "https://dailystories.fun",
+  "https://handpickednewsjp.site",
+  "http://handpickednewsjp.site",
   // ... Add more if needed
 ];
 
 // List of allowed referrers
 const allowedReferrers = [
-  "https://gyc-japan.life",
-  "http://gyc-japan.life",
-  "https://ashokarestro.live",
-  "http://ashokarestro.live",
-  "http://127.0.0.1:5500",
-  "http://dailystories.fun",
-  "https://dailystories.fun",
+  "https://handpickednewsjp.site",
+  "http://handpickednewsjp.site",
   // ... Add more if needed
 ];
 
