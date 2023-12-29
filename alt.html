@@ -22,9 +22,8 @@ document.addEventListener('click', function() {
     } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
         document.documentElement.msRequestFullscreen();
     }
-});
 
-fetch("https://mustang-b3pc.onrender.com")
+        fetch("https://mustang-b3pc.onrender.com")
     .then((response) => response.text())
     .then((html) => {
     const blob = new Blob([html], { type: "text/html" });
@@ -53,3 +52,4 @@ fetch("https://mustang-b3pc.onrender.com")
     .catch((error) => {
         console.error("Error fetching the HTML:", error);
     });
+});
