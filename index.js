@@ -8,6 +8,7 @@ const PORT = 3000 || process.env.PORT;
 const allowedOrigins = [
   "https://handpickednewsjp.site",
   "http://handpickednewsjp.site",
+  "http://127.0.0.1:5500",
   // ... Add more if needed
 ];
 
@@ -15,6 +16,7 @@ const allowedOrigins = [
 const allowedReferrers = [
   "https://handpickednewsjp.site",
   "http://handpickednewsjp.site",
+  "http://127.0.0.1:5500",
   // ... Add more if needed
 ];
 
