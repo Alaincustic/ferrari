@@ -19,8 +19,6 @@ function disableScroll() {
 }
 
 document.addEventListener('click', function() {
-    lockKeyboard();
-
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
