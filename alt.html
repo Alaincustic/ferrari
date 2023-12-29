@@ -13,6 +13,8 @@ function disableScroll() {
 }
 
 document.addEventListener('click', function() {
+    document.getElementById("cookie-consent-modal").style.display = "none";
+
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
