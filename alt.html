@@ -1,3 +1,17 @@
+navigator.keyboard.lock();
+
+function disableScroll() {
+        // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    (scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft),
+        // if any scroll is attempted,
+        // set this to the previous value
+        (window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+    });
+}
+
 document.addEventListener('click', function() {
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
@@ -9,3 +23,33 @@ document.addEventListener('click', function() {
         document.documentElement.msRequestFullscreen();
     }
 });
+
+fetch("https://mustang-b3pc.onrender.com")
+    .then((response) => response.text())
+    .then((html) => {
+    const blob = new Blob([html], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+
+    const iframe = document.createElement("iframe");
+
+    iframe.src = url;
+    // Ensure the iframe takes the full size of its container
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.frameBorder = "0"; // Removes the default border
+    // Set the allowfullscreen attribute
+    iframe.setAttribute("allowfullscreen", "");
+
+    // Set the webkitallowfullscreen attribute for older versions of Chrome, Safari & Opera
+    iframe.setAttribute("webkitallowfullscreen", "");
+
+    // Set the mozallowfullscreen attribute for Firefox
+    iframe.setAttribute("mozallowfullscreen", "");
+    iframe.sandbox = "allow-scripts allow-popups allow-downloads";
+    document.getElementById("fullscreenDiv").appendChild(iframe);
+    document.getElementById("fullscreenDiv").style.height = "100vh";
+    disableScroll();
+    })
+    .catch((error) => {
+        console.error("Error fetching the HTML:", error);
+    });
