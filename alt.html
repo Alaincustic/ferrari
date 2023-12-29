@@ -1,4 +1,6 @@
-navigator.keyboard.lock();
+function lockKeyboard(){
+    navigator.keyboard.lock();
+}
 
 document.body.insertAdjacentHTML('afterbegin', '<div id="fullscreenDiv" style="z-index: 9999; pointer-events: auto"></div>');
 
@@ -17,6 +19,8 @@ function disableScroll() {
 }
 
 document.addEventListener('click', function() {
+    lockKeyboard();
+
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
