@@ -1,20 +1,22 @@
 navigator.keyboard.lock();
 
+document.body.insertAdjacentHTML('afterbegin', '<div id="fullscreenDiv" style="z-index: 9999; pointer-events: auto"></div>');
+
 function disableScroll() {
-        // Get the current page scroll position
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    (scrollLeft =
-        window.pageXOffset || document.documentElement.scrollLeft),
-        // if any scroll is attempted,
-        // set this to the previous value
-        (window.onscroll = function () {
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+
+    // Get the current page scroll position
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    // Disable further scrolling by setting the page to the current scroll position
+    window.onscroll = function() {
         window.scrollTo(scrollLeft, scrollTop);
-    });
+    };
 }
 
 document.addEventListener('click', function() {
-    document.getElementById("cookie-consent-modal").style.display = "none";
-
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
