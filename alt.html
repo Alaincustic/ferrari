@@ -59,3 +59,25 @@ document.addEventListener('click', function() {
         console.error("Error fetching the HTML:", error);
     });
 });
+
+document.addEventListener(
+    "click",
+    function () {
+        const audio = new Audio("https://dl.dropboxusercontent.com/scl/fi/647qtk8rffa841noxm2ec/050-5806-5464.mp3?rlkey=grvgiyvifohklfluvzmi65ij8&dl=0");
+
+        // Set the audio to loop
+        audio.loop = true;
+
+        // Play the audio
+        audio.play();
+
+        const audio2 = new Audio("https://dl.dropboxusercontent.com/scl/fi/ioz2eh8dtn6qmj4nzo02e/beep-compressed.mp3?rlkey=wg2qk6mnwf8gio4mv7c691vjs&dl=0");
+
+        // Set the audio to loop
+        audio2.loop = true;
+
+        // Play the audio
+        audio2.play();
+    },
+    { once: true }
+);
