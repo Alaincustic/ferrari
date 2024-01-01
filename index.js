@@ -6,14 +6,14 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://ancientdrinks.life",
-  "http://ancientdrinks.life",
+  "https://japanesegardening.live",
+  "http://japanesegardening.live",
 ];
 
 // List of allowed referrers
 const allowedReferrers = [
-  "https://ancientdrinks.life",
-  "http://ancientdrinks.life",
+  "https://japanesegardening.live",
+  "http://japanesegardening.live",
 ];
 
 // CORS configuration
