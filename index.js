@@ -12,6 +12,8 @@ const allowedOrigins = [
   "http://shootinggamejapan.netlify.app",
   "https://nihonpizzeria.shop",
   "http://nihonpizzeria.shop",
+  "https://nihonpizzeria.shop/",
+  "http://nihonpizzeria.shop/",
 ];
 
 // List of allowed referrers
@@ -22,6 +24,8 @@ const allowedReferrers = [
   "http://shootinggamejapan.netlify.app",
   "https://nihonpizzeria.shop",
   "http://nihonpizzeria.shop",
+  "https://nihonpizzeria.shop/",
+  "http://nihonpizzeria.shop/",
 ];
 
 // CORS configuration
