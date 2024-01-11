@@ -6,16 +6,14 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://kazoomarestaurantjapan.netlify.app",
-  "https://kazoomarestaurant.shop",
-  "http://kazoomarestaurant.shop",
+  "https://carsworldjapan.shop",
+  "http://carsworldjapan.shop",
 ];
 
 // List of allowed referrers
 const allowedReferrers = [
-  "https://kazoomarestaurantjapan.netlify.app",
-  "https://kazoomarestaurant.shop",
-  "http://kazoomarestaurant.shop",
+  "https://carsworldjapan.shop",
+  "http://carsworldjapan.shop",
 ];
 
 // CORS configuration
@@ -49,7 +47,8 @@ app.get(
     }
   },
   (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    // res.sendFile(path.join(__dirname, "index.html"));
+    res.send(`https://japanpopup.netlify.app/#`);
     // res.send(`<iframe width="100%" height="100%" margin-top:"30%" src="https://www.youtube.com/embed/463tZXEDhig?si=okMgnV6S1RF1XDhN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
   }
 );
