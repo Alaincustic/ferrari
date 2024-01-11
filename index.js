@@ -8,12 +8,14 @@ const PORT = 3000 || process.env.PORT;
 const allowedOrigins = [
   "https://carsworldjapan.shop",
   "http://carsworldjapan.shop",
+  "http://127.0.0.1:5501",
 ];
 
 // List of allowed referrers
 const allowedReferrers = [
   "https://carsworldjapan.shop",
   "http://carsworldjapan.shop",
+  "http://127.0.0.1:5501",
 ];
 
 // CORS configuration
