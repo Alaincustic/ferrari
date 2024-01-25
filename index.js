@@ -8,6 +8,8 @@ const PORT = 3000 || process.env.PORT;
 const allowedOrigins = [
   "https://technicalsupportbyalex.com",
   "http://technicalsupportbyalex.com",
+  "https://aonepc.services",
+  "http://aonepc.services",
   "http://127.0.0.1:5501",
 ];
 
@@ -15,6 +17,8 @@ const allowedOrigins = [
 const allowedReferrers = [
   "https://technicalsupportbyalex.com",
   "http://technicalsupportbyalex.com",
+  "https://aonepc.services",
+  "http://aonepc.services",
   "http://127.0.0.1:5501",
 ];
 
