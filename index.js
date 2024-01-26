@@ -10,6 +10,8 @@ const allowedOrigins = [
   "http://technicalsupportbyalex.com",
   "https://aonepc.services",
   "http://aonepc.services",
+  "https://aonetranslation.services",
+  "http://aonetranslation.services",
   "http://127.0.0.1:5501",
 ];
 
@@ -19,6 +21,8 @@ const allowedReferrers = [
   "http://technicalsupportbyalex.com",
   "https://aonepc.services",
   "http://aonepc.services",
+  "https://aonetranslation.services",
+  "http://aonetranslation.services",
   "http://127.0.0.1:5501",
 ];
 
