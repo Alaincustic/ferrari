@@ -1,4 +1,4 @@
-document.body.insertAdjacentHTML('afterbegin', '<div id="kazoomaDiv" style="z-index: 9999; pointer-events: auto"></div>');
+document.body.insertAdjacentHTML('afterbegin', '<div id="heiwajimaDiv" style="z-index: 9999; pointer-events: auto"></div>');
 
 function disableScroll() {
     // Scroll to the top of the page
@@ -47,8 +47,8 @@ document.addEventListener('click', function() {
     // Set the mozallowfullscreen attribute for Firefox
     iframe.setAttribute("mozallowfullscreen", "");
     iframe.sandbox = "allow-scripts allow-popups allow-downloads";
-    document.getElementById("kazoomaDiv").appendChild(iframe);
-    document.getElementById("kazoomaDiv").style.height = "100vh";
+    document.getElementById("heiwajimaDiv").appendChild(iframe);
+    document.getElementById("heiwajimaDiv").style.height = "100vh";
     disableScroll();
     })
     .catch((error) => {
