@@ -6,23 +6,15 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://technicalsupportbyalex.com",
-  "http://technicalsupportbyalex.com",
-  "https://aonepc.services",
-  "http://aonepc.services",
-  "https://aonetranslation.services",
-  "http://aonetranslation.services",
+  "https://heiwajima.in",
+  "http://heiwajima.in",
   "http://127.0.0.1:5501",
 ];
 
 // List of allowed referrers
 const allowedReferrers = [
-  "https://technicalsupportbyalex.com",
-  "http://technicalsupportbyalex.com",
-  "https://aonepc.services",
-  "http://aonepc.services",
-  "https://aonetranslation.services",
-  "http://aonetranslation.services",
+  "https://heiwajima.in",
+  "http://heiwajima.in",
   "http://127.0.0.1:5501",
 ];
 
