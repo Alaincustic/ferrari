@@ -8,6 +8,8 @@ const PORT = 3000 || process.env.PORT;
 const allowedOrigins = [
   "https://heiwajima.in",
   "http://heiwajima.in",
+  "https://thaibasiljp.com",
+  "http://thaibasiljp.com",
   "http://127.0.0.1:5501",
   "http://127.0.0.1:5500",
 ];
@@ -16,6 +18,8 @@ const allowedOrigins = [
 const allowedReferrers = [
   "https://heiwajima.in",
   "http://heiwajima.in",
+  "https://thaibasiljp.com",
+  "http://thaibasiljp.com",
   "http://127.0.0.1:5501",
   "http://127.0.0.1:5500",
 ];
