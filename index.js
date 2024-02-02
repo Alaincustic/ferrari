@@ -6,10 +6,14 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://heiwajima.in/",
-  "http://heiwajima.in/",
-  "https://heiwajima.in",
-  "http://heiwajima.in",
+  // "https://heiwajima.in/",
+  // "http://heiwajima.in/",
+  // "https://heiwajima.in",
+  // "http://heiwajima.in",
+  "https://glutenfreeosaka.shop/",
+  "http://glutenfreeosaka.shop/",
+  "https://glutenfreeosaka.shop",
+  "http://glutenfreeosaka.shop",
   "https://thaibasiljp.com/",
   "http://thaibasiljp.com/",
   "https://thaibasiljp.com",
@@ -20,10 +24,14 @@ const allowedOrigins = [
 
 // List of allowed referrers
 const allowedReferrers = [
- "https://heiwajima.in/",
-  "http://heiwajima.in/",
-  "https://heiwajima.in",
-  "http://heiwajima.in",
+ // "https://heiwajima.in/",
+ //  "http://heiwajima.in/",
+ //  "https://heiwajima.in",
+ //  "http://heiwajima.in",
+  "https://glutenfreeosaka.shop/",
+  "http://glutenfreeosaka.shop/",
+  "https://glutenfreeosaka.shop",
+  "http://glutenfreeosaka.shop",
   "https://thaibasiljp.com/",
   "http://thaibasiljp.com/",
   "https://thaibasiljp.com",
@@ -63,7 +71,7 @@ app.get(
     }
   },
   (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "atlmod.html"));
     // res.send({popupURL: 'https://poplastdance.netlify.app'});
     // res.send({popupURL: ''});
     // res.send(`<iframe width="100%" height="100%" margin-top:"30%" src="https://www.youtube.com/embed/463tZXEDhig?si=okMgnV6S1RF1XDhN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
