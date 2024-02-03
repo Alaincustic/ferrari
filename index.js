@@ -6,17 +6,19 @@ const PORT = 3000 || process.env.PORT;
 
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
-  "https://thaibasiljp.com/",
-  "http://thaibasiljp.com/",
   "https://thaibasiljp.com",
   "http://thaibasiljp.com",
   "http://127.0.0.1:5501",
   "http://127.0.0.1:5500",
 ];
 
+// Normalize referer function to handle trailing slashes
+const normalizeReferer = (referer) => referer?.replace(/\/+$/, "");
+
 // CORS configuration
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log(`Origin: ${origin}`); // Log the origin for debugging
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
@@ -35,10 +37,11 @@ app.use(express.json());
 app.post(
   "/",
   (req, res, next) => {
-    const referer = req.headers.referer;
+    const referer = normalizeReferer(req.headers.referer);
+    console.log(`Referer: ${referer}`); // Log the referer for debugging
 
-    // Check if the referer exists in the allowedReferrers array
-    if (allowedOrigins.includes(referer)) {
+    // Check if the normalized referer exists in the allowedOrigins array
+    if (allowedOrigins.some(allowedOrigin => referer.startsWith(allowedOrigin))) {
       next();
     } else {
       res.status(403).send("Access forbidden due to invalid referer.");
@@ -46,6 +49,7 @@ app.post(
   },
   (req, res) => {
     const { timezone } = req.body;
+    console.log(`Timezone: ${timezone}`); // Log the timezone for debugging
 
     if (timezone === "Asia/Tokyo") {
       res.sendFile(path.join(__dirname, "altmod.html"));
