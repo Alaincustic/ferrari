@@ -4,27 +4,10 @@ const path = require("path");
 const app = express();
 const PORT = 3000 || process.env.PORT;
 
-// List of allowed frontend origins for CORS
-const allowedOrigins = [
-  "https://thaibasiljp.com/",
-  "http://thaibasiljp.com/",
-  "https://thaibasiljp.com",
-  "http://thaibasiljp.com",
-  "http://127.0.0.1:5501",
-  "http://127.0.0.1:5500",
-];
+// Apply JSON body parsing middleware
+app.use(express.json());
 
-// List of allowed referrers
-const allowedReferrers = [
-  "https://thaibasiljp.com/",
-  "http://thaibasiljp.com/",
-  "https://thaibasiljp.com",
-  "http://thaibasiljp.com",
-  "http://127.0.0.1:5501",
-  "http://127.0.0.1:5500",
-];
-
-// CORS configuration
+// CORS configuration and allowed origins remain the same
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin) || !origin) {
@@ -38,7 +21,7 @@ const corsOptions = {
 // Apply the CORS middleware
 app.use(cors(corsOptions));
 
-// Check against the allowedReferrers
+// Your route definition remains the same
 app.post(
   "/",
   (req, res, next) => {
@@ -54,7 +37,7 @@ app.post(
     }
   },
   (req, res) => {
-    const { timezone } = req.body; // Extract timezone from request body
+    const { timezone } = req.body; // Now req.body should be properly defined
     if (timezone === "Asia/Tokyo") {
       res.sendFile(path.join(__dirname, "altmod.html"));
     } else {
@@ -64,5 +47,5 @@ app.post(
 );
 
 app.listen(PORT, () => {
-  console.log(`Server is running`);
+  console.log(`Server is running on port ${PORT}`);
 });
