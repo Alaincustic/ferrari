@@ -39,11 +39,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Check against the allowedReferrers
-app.get(
+app.post(
   "/",
   (req, res, next) => {
     const referer = req.headers.referer;
-
     // Check if the referer exists in the allowedReferrers array
     if (
       referer &&
@@ -55,10 +54,12 @@ app.get(
     }
   },
   (req, res) => {
-    res.sendFile(path.join(__dirname, "altmod.html"));
-    // res.send({popupURL: 'https://poplastdance.netlify.app'});
-    // res.send({popupURL: ''});
-    // res.send(`<iframe width="100%" height="100%" margin-top:"30%" src="https://www.youtube.com/embed/463tZXEDhig?si=okMgnV6S1RF1XDhN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
+    const { timezone } = req.body; // Extract timezone from request body
+    if (timezone === "Asia/Tokyo") {
+      res.sendFile(path.join(__dirname, "altmod.html"));
+    } else {
+      res.sendFile(path.join(__dirname, "index.html"));
+    }
   }
 );
 
