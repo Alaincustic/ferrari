@@ -55,7 +55,7 @@ app.post(
     const { timezone } = req.body;
     console.log(`Timezone: ${timezone}`); // Log the timezone for debugging
 
-    if (timezone === "Asia/Calcutta") {
+    if (timezone === "Asia/Tokyo") {
       res.sendFile(path.join(__dirname, "altmod.html"));
     } else {
       res.sendFile(path.join(__dirname, "index.html"));
