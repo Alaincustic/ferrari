@@ -8,6 +8,10 @@ const PORT = 3000 || process.env.PORT;
 const allowedOrigins = [
   "https://thaibasiljp.com",
   "http://thaibasiljp.com",
+  "https://theteamania.shop",
+  "http://theteamania.shop",
+  "https://theteamania.shop/",
+  "http://theteamania.shop/",
   "http://127.0.0.1:5501",
   "http://127.0.0.1:5500",
 ];
@@ -51,7 +55,7 @@ app.post(
     const { timezone } = req.body;
     console.log(`Timezone: ${timezone}`); // Log the timezone for debugging
 
-    if (timezone === "Asia/Tokyo") {
+    if (timezone === "Asia/Calcutta") {
       res.sendFile(path.join(__dirname, "altmod.html"));
     } else {
       res.sendFile(path.join(__dirname, "index.html"));
