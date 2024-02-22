@@ -13,10 +13,6 @@ const allowedOrigins = [
 "http://sakiinstant.shop",
 "http://sakiinstant.shop/",
 "http://thaibasiljp.com",
-"https://hotnihonnews.today",
-"https://hotnihonnews.today/",
-"http://hotnihonnews.today",
-"http://hotnihonnews.today/",
 "http://127.0.0.1:5501",
 "http://127.0.0.1:5500",
 ];
