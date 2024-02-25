@@ -26,7 +26,7 @@ const isAllowedReferrer = (referer) => {
 
   const hostname = new URL(referer).hostname;
   
-  if (hostname === "https://www.google.com") {
+  if (hostname === "www.google.com") {
     return false;
   }
   // Allow visits from googleads.g.doubleclick.net or any other source
