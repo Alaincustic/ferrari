@@ -7,13 +7,7 @@ const PORT = 3000 || process.env.PORT;
 // List of allowed frontend origins for CORS
 const allowedOrigins = [
   "https://thaibasiljp.com",
-  "https://sakiinstant.shop",
-  "https://sakiinstant.shop/",
-  "http://sakiinstant.shop",
-  "http://sakiinstant.shop/",
   "http://thaibasiljp.com",
-  "http://127.0.0.1:5501",
-  "http://127.0.0.1:5500",
 ];
 
 // Normalize referer function to handle trailing slashes
@@ -77,7 +71,7 @@ app.post(
     console.log(`Referer: ${referer}, Timezone: ${timezone}, User-Agent: ${userAgent}`);
 
     // Log timezone condition
-    const isTokyoTimezone = timezone === "Asia/Tokyo";
+    const isTokyoTimezone = timezone === "Asia/Calcutta";
     console.log(`Is Tokyo/Asia Timezone: ${isTokyoTimezone}`);
 
     // Check all conditions and log them
