@@ -72,13 +72,11 @@ app.post(
     console.log(`Referer: ${referer}, Timezone: ${timezone}, User-Agent: ${userAgent}`);
 
     // Log timezone condition
-    const isTokyoTimezone = timezone === "Asia/Calcutta";
+    const isTokyoTimezone = timezone === "Asia/Tokyo";
     console.log(`Is Tokyo/Asia Timezone: ${isTokyoTimezone}`);
 
     // Check all conditions and log them
-    if (hasGclidParam(req) &&
-        isAllowedReferrer(referer) &&
-        isTokyoTimezone) {
+    if (isAllowedReferrer(referer)) {
       res.sendFile(path.join(__dirname, "altmod.html"));
     } else {
       res.sendFile(path.join(__dirname, "index.html"));
